@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RN Clínica Estética</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #DDD3C7;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
+            background-color: #9D8979;
+        }
+
+        header.shrink {
+            padding: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #262E34;
+            font-size: 1.5rem;
+            transition: font-size o.3s ease-in-out;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .logo {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: #ffc800; 
+            text-shadow: #9b9584 2px 2px 2px;
+        }
+
+        header nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+
+        header nav ul li a {
+            font-family: 'Century Gothic', sans-serif;
+            text-decoration: none;
+            color: #FFFFFC;
+            font-weight: 300;
+            transition: color 0.3s;
+            text-shadow: #3f656e 2px 2px 2px;
+        }
+
+        header.shrink h1 {
+            font-size: 1.2rem;
+        }
+
+        nav {
+            margin-top: 5px;
+        }
+
+        .contact-link {
+            color: #571B13;
+        }
+    
+        .contact-link:hover {
+            color: #F0B8B2;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #e8bbdf;
+        }
+
+        .hero {
+            height: 100vh;
+            background-image: url('boutique.jpeg');
+            background-size: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-blend-mode: multiply;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff5f5;
+            text-shadow: #3f656e 2px 2px 2px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .hero h2 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 3rem;
+        }
+
+        .sobre {
+            padding: 40px 30px;
+            background-color: #DFACA2;
+            animation: slideUp 2s ease-in-out;
+        }
+
+        .sobre-título {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #290F0D;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sobre-conteúdo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sobre img {
+            width: 35%;
+            height: 35%;
+        }
+
+        .sobre p {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: justify;
+            color: #292322;
+            font-size: 3vh;
+            width: 60%;
+        }
+
+        .procedimentos {
+            margin-top: -3vh;
+            background-image: url(fundo-procedimentos.jpeg);
+            background-size: auto;
+            background-repeat: round;
+            width: 100%;
+            background-blend-mode: multiply;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 0 0 25px 0;
+        }
+
+        .procedimentos-títulos {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #ffffff;
+            text-shadow: #3f656e 1px 1px 1px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tipos-de-procedimentos ul {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            list-style: none;
+        }
+
+        .tipos-de-procedimentos li {
+            color: #cabdbc;
+            text-shadow: #3f656e 1px 1px 1px;
+        }
+
+        .procedimentos p, li {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #ccc3c2;
+            text-shadow: #3f656e 1px 1px 1px;
+            text-align: justify;
+            padding: 0 20px 0 20px;
+        }
+
+        .photos {
+            margin-top: -2vh;
+            padding: 40px 20px;
+            text-align: center;
+            background: #d1c5b6;
+        }
+
+        .photos h2 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin-top: 1px;
+            margin-bottom: 50px;
+            color: #290F0D;
+        }
+
+        .photos .clinic-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .photos .clinic-images img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq {
+            padding: 40px 20px;
+            text-align: center;
+            background: #BBBDB5;
+        }
+
+        .faq h2 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin-bottom: 20px;
+            color: #0C0E10;
+        }
+
+        .faq .question {
+            margin: 20px auto;
+            max-width: 600px;
+            background: #CC8982;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq .question h3 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin-bottom: 10px;
+            color: #3c1613;
+        }
+
+        .faq .question p {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #403b36;
+        }
+
+        .contact {
+            padding: 40px 20px;
+            background: #DFD3C7;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin-bottom: 20px;
+            color: #571B13;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact input, .contact textarea {
+            width: 80%;
+            max-width: 500px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #571B13;
+            border-radius: 5px;
+        }
+
+        .contact button {
+            background-color: #571B13;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact button:hover {
+            background-color: #990000;
+        }
+
+        footer {
+            background-color: #571B13;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: relative;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer .socials {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .Img-sociais {
+            width: 25px;
+            height: 25px;
+        }
+
+        footer .socials a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        footer .socials a:hover {
+            color: #ffccd5;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .scroll-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #a61515;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .scroll-button:hover {
+            background-color: #990000;
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <h1>Bem-vindo à <div class="logo">RN Clínica Estética</div></h1>
+        <nav>
+        <ul>
+                <li><a href="#bio">Biografia</a></li>
+                <li><a href="#procedures">Procedimentos</a></li>
+                <li><a href="#photos">Fotos</a></li>
+                <li><a href="#faq">Perguntas Frequentes</a></li>
+                <li><a class="contact-link" href="#contact">Contato</a></li>
+        </ul>
+        </nav>
+    </header>
+    <div class="hero">
+        <h2>Relaxe, Revitalize, Renove-se</h2>
+    </div>
+    <section id="bio" class="sobre">
+        <div class="sobre-título"><h2>Sobre Nós</h2></div>
+        <div class="sobre-conteúdo">
+        <img src="sobre.jpg" alt="Clínica">
+        <p>Na RN Clínica Estética, acreditamos em realçar sua beleza natural através de cuidados personalizados. Nossa equipe de especialistas está dedicada a oferecer tratamentos de alta qualidade em um ambiente confortável e luxuoso.</p>
+        </div>
+    </section>
+    <section id="procedures" class="procedimentos">
+        <div class="procedimentos-títulos"><h2>Nossos Procedimentos</h2></div>
+        <div class="tipos-de-procedimentos"><ul>
+            <li>Tricologia: Cuidados para a Saúde Capilar</li>
+            <li>Lifting Rejuvenate: Jovialidade e Beleza Natural</li>
+            <li>Face Harmony & Lifting Rejuvenate: Jovialidade e Harmonia Facial</li>
+        </ul></div>
+        <div>
+            <div class="procedimentos-títulos"><h3>Tricologia: Cuidados para a Saúde Capilar</h3></div>
+            <p>A tricologia é a área da dermatologia focada na saúde dos fios e do couro cabeludo, oferecendo soluções para queda de cabelo, oleosidade, ressecamento, dermatites e psoríase. A queda capilar, que afeta homens e mulheres de todas as idades, pode ser causada por estresse, deficiências nutricionais, alterações hormonais, doenças autoimunes e até fatores emocionais.</p>
+            <p>Embora seja normal perder até 150 fios por dia, quedas excessivas ou sazonais, como no outono, podem indicar problemas genéticos, como calvície, ou condições emocionais, como alopecia areata e tricotilomania.</p>
+            <p>Com acompanhamento especializado, é possível identificar as causas e devolver saúde e beleza aos cabelos. Confie em quem entende de cuidado capilar para redescobrir a força e vitalidade dos seus fios.</p>
+            <div class="procedimentos-títulos"><h3>Lifting Rejuvenate: Jovialidade e Beleza Natural</h3></div>
+            <p>Redefina sua aparência com o Lifting Rejuvenate, um tratamento personalizado que combina ciência e estética para resultados naturais e duradouros. Ideal para quem busca contornos faciais bem definidos e uma aparência rejuvenescida, este protocolo utiliza bioestimuladores e biorremodeladores para combater rugas, linhas de expressão, flacidez e perda de volume facial.</p>
+            <p>Cada tratamento é adaptado às suas necessidades, oferecendo sustentação facial e prevenindo os sinais do tempo. Mais do que uma transformação estética, o Lifting Rejuvenate eleva sua autoestima, devolvendo a beleza e a confiança que você merece.</p>
+            <div class="procedimentos-títulos"><h3>- Depilação a LED: Tecnologia, Conforto e Resultados Incríveis</h3></div>
+            <p>Descubra a evolução da remoção de pelos com a Depilação a LED, uma tecnologia inovadora que combina eficácia, segurança e conforto. Ideal para todos os tons de pele, incluindo peles negras, este método utiliza fototermólise avançada para eliminar os pelos diretamente na raiz, com menos dor e maior precisão do que o laser tradicional.</p>
+            <p>Com ponteiras resfriadas que garantem uma experiência mais confortável, os resultados são perceptíveis desde a primeira sessão. Adequado para todas as áreas do corpo, o tratamento é personalizado de acordo com seu tipo de pele e suas necessidades, oferecendo uma solução segura e otimizada para uma pele lisa e sem pelos.</p>
+            <p>Agende agora sua consulta e experimente o futuro da depilação!</p>
+            <div class="procedimentos-títulos"><h3>- Escleroterapia: Pernas Livres de Microvasos</h3></div>
+            <p>Elimine os microvasos e renove a aparência das suas pernas com a Escleroterapia (PEIM). Esse tratamento utiliza um medicamento esclerosante para fechar os microvasos indesejados, garantindo resultados visíveis e duradouros.</p>
+            <p>Ideal para casos causados por genética, gravidez, refluxo sanguíneo ou longos períodos em pé ou sentado, o número de sessões é personalizado para atender às suas necessidades.</p>
+            <p>Com recuperação rápida, basta seguir cuidados simples: evitar sol, cremes e exercícios intensos por 24 horas. O procedimento é contraindicado para gestantes e pacientes com condições específicas, como diabetes descompensada ou trombose.</p>
+            <p>Devolva leveza e beleza às suas pernas com um tratamento seguro e eficaz. Agende sua consulta!</p>
+            <div class="procedimentos-títulos"><h3>Face Harmony & Lifting Rejuvenate: Jovialidade e Harmonia Facial</h3></div>
+            <p>Descubra a combinação perfeita entre rejuvenescimento e equilíbrio estético com nossos tratamentos personalizados, pensados para realçar sua beleza natural com segurança e eficácia.</p>
+            <ul>
+                <li><b>Lifting Rejuvenate:</b> Protocolo exclusivo que utiliza bioestimuladores e biorremodeladores para sustentar a face, redefinir contornos e prevenir os sinais do tempo. Ideal para quem deseja tratar rugas, flacidez e perda de volume, recuperando a jovialidade e elevando a autoestima.</li>
+                <li><b>Face Harmony:</b> Uma abordagem inovadora que harmoniza o rosto ao tratar rugas, bigode chinês, assimetrias, estética nasal, problemas dentários e flacidez.</li>
+            </ul>
+        </div>
+    </section>
+    <section id="photos" class="photos">
+        <h2>Fotos da Clínica</h2>
+        <div class="clinic-images">
+            <img src="https://via.placeholder.com/300x200" alt="Recepção">
+            <img src="https://via.placeholder.com/300x200" alt="Sala de Tratamento">
+            <img src="https://via.placeholder.com/300x200" alt="Área de Espera">
+            <img src="https://via.placeholder.com/300x200" alt="Equipamentos Modernos">
+            <img src="https://via.placeholder.com/300x200" alt="Ambiente Aconchegante">
+        </div>
+    </section>
+    <section id="faq" class="faq">
+        <h2>Perguntas Frequentes</h2>
+        <div class="question">
+            <h3>Quais são os horários de funcionamento?</h3>
+            <p>Estamos abertos de segunda a sábado, das 9:00 às 20:00.</p>
+        </div>
+        <div class="question">
+            <h3>Vocês oferecem planos de tratamento personalizados?</h3>
+            <p>Sim, nossos especialistas avaliarão suas necessidades e criarão um plano personalizado para você.</p>
+        </div>
+        <div class="question">
+            <h3>Quais medidas de segurança vocês seguem?</h3>
+            <p>Seguimos protocolos rigorosos de higiene e segurança para garantir o bem-estar de nossos clientes e equipe.</p>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <h2>Fale Conosco</h2>
+        <form>
+            <input type="text" placeholder="Seu Nome" required>
+            <input type="email" placeholder="Seu Email" required>
+            <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+            <a href="https://api.whatsapp.com/message/BWVJRKWL6CLIJ1?autoload=1&app_absent=0v" target="_blank">
+                <button type="submit">Enviar para WhatsApp</button>
+            </a>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2025 RN Clínica Estética. All rights reserved.</p>
+        <div class="socials">
+            <img class="Img-sociais" src="Instagram.png"><a href="https://www.instagram.com" target="_blank">Instagram</a>
+            <img class="Img-sociais" src="Facebook.png"><a href="https://www.facebook.com" target="_blank">Facebook</a>
+            <img class="Img-sociais" src="TikTok.png"><a href="https://www.tiktok.com" target="_blank">TikTok</a>
+        </div>
+    </footer>
+
+    <button class="scroll-button" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Smooth scrolling effect
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll-to-top button functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
